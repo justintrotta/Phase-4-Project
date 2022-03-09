@@ -1,4 +1,4 @@
 class Order < ApplicationRecord
   belongs_to :supplier
-  belongs_to :parts
+  has_many :parts
 end

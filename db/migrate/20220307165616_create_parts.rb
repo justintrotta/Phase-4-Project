@@ -3,10 +3,10 @@ class CreateParts < ActiveRecord::Migration[7.0]
     create_table :parts do |t|
       t.string :name
       t.string :model
-      t.integer :year
-      t.string :price
+      t.string :year
+      t.string :make
+      t.integer :price
       t.string :description
-      t.references :supplier
       t.references :order
 
       t.timestamps
