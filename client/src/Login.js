@@ -6,6 +6,10 @@ function Login() {
         password: ""
     })
 
+    function handleSubmit(){
+        e.preventDefault()
+    }
+
     function onChange(e){
         const name = e.target.name
         value = e.target.value
@@ -15,9 +19,10 @@ function Login() {
 
     render(
         <div id="login">
-        <form id="login-form">
+        <form id="login-form" onSubmit={handleSubmit}>
             <input type="text" placeholder="Username" name="username"/>
             <input type="text" placeholder="Password" name="password"/>
+            <button id="submit">Login</button>
         </form>
         </div>
     )

@@ -5,6 +5,15 @@ class SuppliersController < ApplicationController
         render json: supplier, status: :created
     end
 
+    def destroy 
+        supplier = Supplier.find(params[:id])
+        supplier.destroy
+    end
+
+    def index 
+        render json: Supplier.all
+    end
+
     private
 
     def supplier_params

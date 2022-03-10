@@ -1,9 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import {useState, useEffect} from 'react'
-import AddPartForm from './AddPartForm.js';
-import AddSupplierForm from './AddSupplierForm.js';
-import AddOrderForm from './AddOrderForm.js';
+
 
 function App() {
 
@@ -26,9 +24,6 @@ function App() {
 
   return (
     <div>
-      <AddSupplierForm/>
-      <AddOrderForm/>
-      <AddPartForm/>
       {partsMap}
     </div>
   );

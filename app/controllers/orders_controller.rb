@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
         render json: Order.find(params[:id])
     end
 
-    def delete
+    def destroy
         order = Order.find(params[:id])
         order.destroy
     end

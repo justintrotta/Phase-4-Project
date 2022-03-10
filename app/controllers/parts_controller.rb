@@ -9,6 +9,11 @@ class PartsController < ApplicationController
         render json: part
     end
 
+    def destroy
+        part = Part.find(params[:id])
+        part.destroy, status: :deleted
+    end
+
     private
 
     def part_params
