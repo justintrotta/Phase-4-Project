@@ -9,18 +9,24 @@ import AddSupplierForm from './AddSupplierForm.js';
 import AddOrderForm from './AddOrderForm.js';
 import SupplierList from './SupplierList';
 import OrderList from './OrderList';
+import Login from "./Login";
+import Signup from "./Signup";
 
 ReactDOM.render(
+<>
   <Router>
     <Routes>
       <Route path="/" element={<App />}/>
       <Route path="/suppliers" element={<SupplierList />}/>
       <Route path="/orders" element={<OrderList />}/>
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/signup" element={<Signup />}/>
       <Route path="parts"/>
       <Route path="orders"/>
       <Route path="suppliers"/>
     </Routes>
   </Router>
+</>
   ,
   document.getElementById('root')
 );

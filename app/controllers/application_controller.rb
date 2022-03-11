@@ -3,8 +3,14 @@ class ApplicationController < ActionController::API
 
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
+
+    before_action :authorize
   
     private
+
+    def authorize
+      @current_user = User.find_by(id: session[:user_id])
+    end
   
     def not_found(error)
       render json: {error: "#{error.model} not found"}, status: :not_found

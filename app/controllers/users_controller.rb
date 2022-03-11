@@ -1,18 +1,20 @@
 class UsersController < ApplicationController
+
+    before_action :authorized, only: [:show]
+
     def show 
-        user = User.find_by(id: session[:user_id])
-        render json: user
+        render json: @current_user
     end
 
     def create
-        user = User.create!(user_params)
+        user = User.create(user_params)
         session[:user_id] = user.id
-        redirect_to "/"
-        render json: user, status: :created
+        render json: user
+
     end
 
     private 
     def user_params
-        params.require(:user).permeit(:name, :email, :password, :password_confirmation)
+        params.permit(:name, :email, :password, :password_confirmation)
     end
 end

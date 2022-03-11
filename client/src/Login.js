@@ -6,22 +6,30 @@ function Login() {
         password: ""
     })
 
-    function handleSubmit(){
+    function handleSubmit(e) {
         e.preventDefault()
-    }
+        fetch("https://localhost:3000/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(loginData),
+        })
+      }
+    
 
-    function onChange(e){
+    function handleChange(e){
         const name = e.target.name
-        value = e.target.value
+        const value = e.target.value
 
         setLoginData(...loginData, {[name]: value})
     }
 
-    render(
+    return (
         <div id="login">
         <form id="login-form" onSubmit={handleSubmit}>
-            <input type="text" placeholder="Username" name="username"/>
-            <input type="text" placeholder="Password" name="password"/>
+            <input type="text" placeholder="Username" name="username" onChange={handleChange}/>
+            <input type="text" placeholder="Password" name="password" onChange={handleChange}/>
             <button id="submit">Login</button>
         </form>
         </div>
