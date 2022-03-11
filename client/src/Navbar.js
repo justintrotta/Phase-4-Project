@@ -1,7 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-function Navbar({user}){
+function Navbar({user, setUser}){
+
+    function handleClick() {
+        fetch("http://localhost:3000/logout", {method: "DELETE"}).then(setUser(null))
+    }
 
     if (!user) {
         return (
@@ -21,6 +25,7 @@ function Navbar({user}){
             <Link to="/suppliers">Suppliers</Link>
             <Link to="/login">Login</Link>
             <Link to="/signup">Sign Up</Link>
+            <button onClick={handleClick}>Logout</button>
         </div>
     )
     }

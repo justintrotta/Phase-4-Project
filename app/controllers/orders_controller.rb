@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
 
+    skip_before_action :authorize
+
     def index
         render json: Order.all
     end
@@ -28,6 +30,6 @@ class OrdersController < ApplicationController
     private
 
     def order_params
-        params.permit(:id ,:date, :arrival, :complete, :supplier_id, :parts_id)
+        params.require(:order).permit(:id, :arrival, :date, :completed )
     end
 end

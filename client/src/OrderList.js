@@ -22,23 +22,26 @@ function OrderList(){
 
     function handleUpdate(e){
         e.preventDefault()
+        const data = {
+            [e.target.previousSibling.previousSibling.name]: e.target.previousSibling.previousSibling.checked,
+            [e.target.previousSibling.previousSibling.previousSibling.name]: e.target.previousSibling.previousSibling.previousSibling.value,
+            [e.target.previousSibling.previousSibling.previousSibling.previousSibling.name]: e.target.previousSibling.previousSibling.previousSibling.previousSibling.value
+        }
+        console.log(data)
         fetch(`http://localhost:3000/orders/${e.target.name}`, {
             method: 'PATCH',
             headers: {"Content-Type":"application/json"},
-            body: JSON.stringify({
-                [e.target.previousSibling.previousSibling.name]: [e.target.previousSibling.previousSibling.value],
-                [e.target.previousSibling.previousSibling.previousSibling.name]: [e.target.previousSibling.previousSibling.previousSibling.value],
-                [e.target.previousSibling.previousSibling.previousSibling.previousSibling.name]: [e.target.previousSibling.previousSibling.previousSibling.previousSibling.value]
-            })
+            body: JSON.stringify(data)
         })
+        
     }
 
     const ordersMap = orders.map((order) => {
         return (
         <form id="orders-form" key={order.id}>
-            <input type="text" name="date" placeholder={order.date}/>
-            <input type="text" name="arrival" placeholder={order.arrival}/>
-            <input type="checkbox" name="completed"  defaultChecked={order.completed}/>
+            <input type="text" name="date" defaultValue={order.date}/>
+            <input type="text" name="arrival" defaultValue={order.arrival}/>
+            <input type="checkbox" name="completed" defaultChecked={order.completed}/>
             <label for="checkbox">Completed</label>
             <button id="update" name={order.id} onClick={handleUpdate}>Update</button>
             <button id="delete" onClick={handleDelete}>Delete</button>

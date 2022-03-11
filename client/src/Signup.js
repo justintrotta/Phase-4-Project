@@ -18,25 +18,15 @@ function handleChange(e){
 }
 
 function handleSubmit(e){
-    console.log(JSON.stringify(formData.name))
+    console.log(JSON.stringify(formData))
     e.preventDefault()
-    if (formData.password === formData.password_confirmation) {
-        fetch("http://localhost:3000/signup", {
-            method: "POST",
-            headers: {"Content-Type":"application/json"},
-            body: JSON.stringify( formData
-                // {
-                // name: formData.name,
-                // email: formData.email,
-                // password: formData.password,
-                // admin: formData.admin
-            // }
-            )
-        }).then(setFail(<div>Account successfully created.</div>))
-    } else {
-        setFail(<div>Passwords don't match.</div>)
+    fetch("http://localhost:3000/signup", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(formData)
+    }).then(setFail(<div>Account successfully created.</div>))
     }
-}
+
 
 
 return (
@@ -49,7 +39,6 @@ return (
             <input type="password" name="password" placeholder="Password" onChange={handleChange}/>
             <input type="password" name="password_confirmation" placeholder="Confirm Password" onChange={handleChange}/>
             <button type="submit">Create Account</button>
-            
         </form>
     </div>
 )

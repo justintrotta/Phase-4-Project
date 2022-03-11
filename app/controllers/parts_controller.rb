@@ -1,5 +1,7 @@
 class PartsController < ApplicationController
 
+    skip_before_action :authorize
+
     def index
         render json: Part.all
     end

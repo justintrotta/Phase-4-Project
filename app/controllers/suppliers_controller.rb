@@ -1,5 +1,7 @@
 class SuppliersController < ApplicationController
 
+    skip_before_action :authorize
+    
     def create
         supplier = Supplier.create!(supplier_params)
         render json: supplier, status: :created

@@ -3,19 +3,22 @@ import Navbar from './Navbar';
 
 function Login() {
     const [loginData, setLoginData] = useState({
-        username: "",
+        name: "",
         password: ""
     })
 
     function handleSubmit(e) {
         e.preventDefault()
+        
+        
+        
         fetch("http://localhost:3000/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(loginData),
-        }).then()
+        }).then(fetch("http://localhost:3000/login").then((response) => response.json()).then(console.log))
       }
     
 
@@ -30,7 +33,7 @@ function Login() {
         <div id="login">
           <Navbar/>
           <form id="login-form" onSubmit={handleSubmit}>
-              <input type="text" placeholder="Username" name="username" onChange={handleChange}/>
+              <input type="text" placeholder="Username" name="name" onChange={handleChange}/>
               <input type="password" placeholder="Password" name="password" onChange={handleChange}/>
               <button id="submit">Login</button>
         </form>

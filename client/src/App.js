@@ -1,7 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import {useState, useEffect} from 'react'
 import Navbar from './Navbar'
+import Login from './Login'
 
 
 function App() {
@@ -30,9 +30,14 @@ function App() {
 
   console.log(user)
 
+  if (!user) return(
+  <div>
+  <Login setUser={setUser}/>
+  {partsMap}
+  </div>)
   return (
     <div>
-      <Navbar user={user}/>
+      <Navbar user={user} setUser={setUser}/>
       {partsMap}
     </div>
   );
