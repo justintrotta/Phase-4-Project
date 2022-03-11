@@ -11,7 +11,7 @@ class PartsController < ApplicationController
 
     def destroy
         part = Part.find(params[:id])
-        part.destroy, status: :deleted
+        part.destroy
     end
 
     private
