@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
     end
 
     def update
+        
         order = Order.find(params[:id])
         order.update(order_params)
         render json: order
@@ -27,6 +28,6 @@ class OrdersController < ApplicationController
     private
 
     def order_params
-        params.permit(:date, :arrival, :complete, :supplier_id, :parts_id)
+        params.permit(:id ,:date, :arrival, :complete, :supplier_id, :parts_id)
     end
 end

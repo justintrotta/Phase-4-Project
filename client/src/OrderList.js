@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Navbar from './Navbar';
+import {Link} from 'react-router-dom';
 
 function OrderList(){
 
@@ -23,6 +24,7 @@ function OrderList(){
         e.preventDefault()
         fetch(`http://localhost:3000/orders/${e.target.name}`, {
             method: 'PATCH',
+            headers: {"Content-Type":"application/json"},
             body: JSON.stringify({
                 [e.target.previousSibling.previousSibling.name]: [e.target.previousSibling.previousSibling.value],
                 [e.target.previousSibling.previousSibling.previousSibling.name]: [e.target.previousSibling.previousSibling.previousSibling.value],
@@ -49,6 +51,7 @@ function OrderList(){
         <div id="orders-list">
             <Navbar />
             {ordersMap}
+            <Link to="/add-order">Add New Order</Link>
         </div>
     )
 }

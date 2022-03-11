@@ -9,13 +9,13 @@ function Login() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch("https://localhost:3000/login", {
+        fetch("http://localhost:3000/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(loginData),
-        })
+        }).then()
       }
     
 
@@ -23,7 +23,7 @@ function Login() {
         const name = e.target.name
         const value = e.target.value
 
-        setLoginData(...loginData, {[name]: value})
+        setLoginData({...loginData, [name]: value})
     }
 
     return (
@@ -31,7 +31,7 @@ function Login() {
           <Navbar/>
           <form id="login-form" onSubmit={handleSubmit}>
               <input type="text" placeholder="Username" name="username" onChange={handleChange}/>
-              <input type="text" placeholder="Password" name="password" onChange={handleChange}/>
+              <input type="password" placeholder="Password" name="password" onChange={handleChange}/>
               <button id="submit">Login</button>
         </form>
         </div>

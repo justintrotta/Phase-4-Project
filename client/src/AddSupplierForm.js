@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import Navbar from './Navbar'
+import Navbar from './Navbar';
+import {Link} from 'react-router-dom';
 
 function AddSupplierForm() {
 
@@ -28,6 +29,7 @@ function AddSupplierForm() {
             },
             body: JSON.stringify(formData)
         })
+        console.log(formData)
     }
 
     return (
@@ -39,6 +41,7 @@ function AddSupplierForm() {
                 <input type="text" placeholder="Address" name="address" onChange={handleChange}/>
                 <button id="submit">Submit</button>
             </form>
+            <Link to="/suppliers">Return</Link>
         </div>
     )
 }

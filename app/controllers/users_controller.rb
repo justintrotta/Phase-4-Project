@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
 
-    before_action :authorized, only: [:show]
+    before_action :authorize, only: [:show]
 
     def show 
-        render json: @current_user
+        user = User.find(session[:user])    
+        render json: user
     end
 
     def create
@@ -15,6 +16,6 @@ class UsersController < ApplicationController
 
     private 
     def user_params
-        params.permit(:name, :email, :password, :password_confirmation)
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)
     end
 end

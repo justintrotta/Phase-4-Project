@@ -22,8 +22,8 @@ ReactDOM.render(
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup" element={<Signup />}/>
       <Route path="parts"/>
-      <Route path="orders"/>
-      <Route path="suppliers"/>
+      <Route path="add-orders" element={<AddOrderForm/>}/>
+      <Route path="add-suppliers" element={<AddSupplierForm />}/>
     </Routes>
   </Router>
 </>

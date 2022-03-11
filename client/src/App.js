@@ -7,7 +7,7 @@ import Navbar from './Navbar'
 function App() {
 
   const [parts, setParts] = useState([])
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState(null)
   
   useEffect(() => {
     fetch("http://localhost:3000/parts").then((response) => response.json()).then(setParts);
@@ -32,7 +32,7 @@ function App() {
 
   return (
     <div>
-      <Navbar user={user} setUser={setUser}/>
+      <Navbar user={user}/>
       {partsMap}
     </div>
   );

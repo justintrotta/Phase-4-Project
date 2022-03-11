@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Navbar from './Navbar'
 
 function Signup(){
 const [fail, setFail] = useState((<div></div>))
@@ -17,16 +18,20 @@ function handleChange(e){
 }
 
 function handleSubmit(e){
+    console.log(JSON.stringify(formData.name))
     e.preventDefault()
     if (formData.password === formData.password_confirmation) {
         fetch("http://localhost:3000/signup", {
             method: "POST",
-            body: JSON.stringify({
-                name: formData.name,
-                email: formData.email,
-                password: formData.password,
-                admin: formData.admin
-            })
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify( formData
+                // {
+                // name: formData.name,
+                // email: formData.email,
+                // password: formData.password,
+                // admin: formData.admin
+            // }
+            )
         }).then(setFail(<div>Account successfully created.</div>))
     } else {
         setFail(<div>Passwords don't match.</div>)
@@ -36,12 +41,13 @@ function handleSubmit(e){
 
 return (
     <div id="signup-form">
+        <Navbar/>
         <form onSubmit={handleSubmit}>
             {fail}
             <input type="text" name="name" placeholder="Username" onChange={handleChange} />
             <input type="text" name="email" placeholder="Email" onChange={handleChange}/>
-            <input type="text" name="password" placeholder="Password" onChange={handleChange}/>
-            <input type="text" name="password_confirmation" placeholder="Confirm Password" onChange={handleChange}/>
+            <input type="password" name="password" placeholder="Password" onChange={handleChange}/>
+            <input type="password" name="password_confirmation" placeholder="Confirm Password" onChange={handleChange}/>
             <button type="submit">Create Account</button>
             
         </form>

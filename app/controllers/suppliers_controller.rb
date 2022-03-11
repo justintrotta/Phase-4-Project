@@ -14,9 +14,19 @@ class SuppliersController < ApplicationController
         render json: Supplier.all
     end
 
+    def update
+        supplier = Supplier.find(params[:id])
+        supplier.update(supplier_params)
+        render json: supplier
+    end
+
+    def show
+        supplier = Supplier.find(params[:id])
+        render json: supplier
+    end
     private
 
     def supplier_params
-        params.permit(:name, :phone, :address)
+        params.permit(:id, :name, :phone, :address)
     end
 end
