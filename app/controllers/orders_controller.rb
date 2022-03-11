@@ -4,6 +4,12 @@ class OrdersController < ApplicationController
         render json: Order.all
     end
 
+    def update
+        order = Order.find(params[:id])
+        order.update(order_params)
+        render json: order
+    end
+
     def show
         render json: Order.find(params[:id])
     end

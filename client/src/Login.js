@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Navbar from './Navbar';
 
 function Login() {
     const [loginData, setLoginData] = useState({
@@ -27,10 +28,11 @@ function Login() {
 
     return (
         <div id="login">
-        <form id="login-form" onSubmit={handleSubmit}>
-            <input type="text" placeholder="Username" name="username" onChange={handleChange}/>
-            <input type="text" placeholder="Password" name="password" onChange={handleChange}/>
-            <button id="submit">Login</button>
+          <Navbar/>
+          <form id="login-form" onSubmit={handleSubmit}>
+              <input type="text" placeholder="Username" name="username" onChange={handleChange}/>
+              <input type="text" placeholder="Password" name="password" onChange={handleChange}/>
+              <button id="submit">Login</button>
         </form>
         </div>
     )

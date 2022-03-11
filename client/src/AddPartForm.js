@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Navbar from './Navbar'
 
 function AddPartForm() {
 
@@ -38,6 +39,8 @@ function AddPartForm() {
     }
 
 return (
+    <>
+    <Navbar/>
     <div id="add-part-form">
     <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Name" name="name" onChange={handleChange}/>
@@ -50,6 +53,7 @@ return (
         <button id="submit">Submit</button>
     </form>    
     </div>
+    </>
 )
 }
 

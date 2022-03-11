@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import Navbar from './Navbar';
 
 function SupplierList(){
 
@@ -39,6 +40,7 @@ function SupplierList(){
 
     return (
         <div id="suppliers-list">
+            <Navbar/>
             {suppliersMap}
         </div>
     )

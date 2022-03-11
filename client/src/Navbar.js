@@ -37,10 +37,8 @@ function Navbar({user, setUser}){
         <div id="navbar">
             <Link to="/">Home</Link>
             <Link to="/parts">Parts</Link>
-            {/* {isAdmin} */}
             <Link to="/login">Login</Link>
             <Link to="/signup">Sign Up</Link>
-            {/* {isLoggedIn} */}
         </div>
     )
 }

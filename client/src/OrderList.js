@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import Navbar from './Navbar';
 
 function OrderList(){
 
@@ -19,12 +20,13 @@ function OrderList(){
     }
 
     function handleUpdate(e){
+        e.preventDefault()
         fetch(`http://localhost:3000/orders/${e.target.name}`, {
             method: 'PATCH',
             body: JSON.stringify({
-                [e.target.parentElement.firstChild.name]: [e.target.parentElement.firstChild.value],
-                [e.target.parentElement.secondChild.name]: [e.target.parentElement.secondChild.value],
-                [e.target.parentElement.thirdChild.name]: [e.target.parentElement.thirdChild.value]
+                [e.target.previousSibling.previousSibling.name]: [e.target.previousSibling.previousSibling.value],
+                [e.target.previousSibling.previousSibling.previousSibling.name]: [e.target.previousSibling.previousSibling.previousSibling.value],
+                [e.target.previousSibling.previousSibling.previousSibling.previousSibling.name]: [e.target.previousSibling.previousSibling.previousSibling.previousSibling.value]
             })
         })
     }
@@ -32,12 +34,12 @@ function OrderList(){
     const ordersMap = orders.map((order) => {
         return (
         <form id="orders-form" key={order.id}>
-            <input type="text" name="date" value={order.date}/>
-            <input type="text" name="arrival" value={order.arrival}/>
-            <input type="checkbox" name="completed"  checked={order.completed}/>
+            <input type="text" name="date" placeholder={order.date}/>
+            <input type="text" name="arrival" placeholder={order.arrival}/>
+            <input type="checkbox" name="completed"  defaultChecked={order.completed}/>
             <label for="checkbox">Completed</label>
-            <button id="update" onClick={handleUpdate}>Update</button>
-            <button id="delete" name={order.id} onClick={handleDelete}>Delete</button>
+            <button id="update" name={order.id} onClick={handleUpdate}>Update</button>
+            <button id="delete" onClick={handleDelete}>Delete</button>
 
         </form>
         )
@@ -45,6 +47,7 @@ function OrderList(){
 
     return (
         <div id="orders-list">
+            <Navbar />
             {ordersMap}
         </div>
     )

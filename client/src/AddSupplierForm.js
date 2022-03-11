@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Navbar from './Navbar'
 
 function AddSupplierForm() {
 
@@ -30,8 +31,9 @@ function AddSupplierForm() {
     }
 
     return (
-        <div id="add-supplier-form" onSubmit={handleSubmit}>
-            <form>
+        <div id="add-supplier-form">
+            <Navbar/>
+            <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="Name" name="name" onChange={handleChange}/>
                 <input type="text" placeholder="Phone Number" name="phone" onChange={handleChange}/>
                 <input type="text" placeholder="Address" name="address" onChange={handleChange}/>
